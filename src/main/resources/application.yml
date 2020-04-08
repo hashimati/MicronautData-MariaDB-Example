@@ -1,0 +1,44 @@
+micronaut:
+  application:
+    name: mariadbexample
+  server:
+    port: 8080
+
+
+---
+micronaut:
+  views:
+    thymeleaf:
+      enabled: true
+
+---
+micronaut:
+  router:
+    static-resources:
+      default:
+        mapping: "/**"
+      '*':
+        paths:
+        - "classpath:static"
+
+---
+
+datasources:
+  default:
+    url: jdbc:mariadb://127.0.0.1:3396/HelloDB
+    driverClassName: org.mariadb.jdbc.Driver
+    username: root
+    password: 'Hello@1234'
+    dialect: MYSQL
+
+
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+
+---
+
+datasources.default: {}
